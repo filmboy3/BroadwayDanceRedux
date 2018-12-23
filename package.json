@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
@@ -36,5 +37,11 @@
     "webpack": "^4.28.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.11"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.2.0",
+    "chance": "^1.0.18",
+    "redux-saga": "^0.16.2",
+    "ws": "^6.1.2"
   }
 }
