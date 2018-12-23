@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
+    "server": "node server/app.js",
     "build": "webpack --mode production",
     "test": "jest test --env=jsdom"
   },
@@ -12,6 +13,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-jest": "^21.2.0",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
+    "jest": "21.3.0-beta.2",
+    "jest-environment-jsdom": "^21.2.1",
+    "react-test-renderer": "^16.0.0"
+  },
+  "dependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
@@ -21,27 +30,23 @@
     "babel-loader": "^8.0.0-beta.6",
     "css-loader": "^2.0.2",
     "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.7.1",
+    "@babel/runtime": "^7.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "jest": "^23.6.0",
     "mini-css-extract-plugin": "^0.5.0",
-    "prop-types": "^15.6.2",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-hot-loader": "^4.6.3",
-    "react-redux": "^6.0.0",
-    "redux": "^4.0.1",
     "style-loader": "^0.23.1",
     "uuid": "^3.3.2",
     "webpack": "^4.28.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.11"
-  },
-  "dependencies": {
-    "@babel/runtime": "^7.2.0",
+    "webpack-dev-server": "^3.1.11",
     "chance": "^1.0.18",
-    "redux-saga": "^0.16.2",
-    "ws": "^6.1.2"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
+    "react-scripts": "1.0.14",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.15.6",
+    "ws": "^6.1.2",
+    "prop-types": "^15.6.2"
   }
 }
