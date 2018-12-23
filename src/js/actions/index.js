@@ -1,5 +1,29 @@
-import { ADD_ARTICLE } from "../constants/action-types";
+import * as types from '../constants/ActionTypes'
 
-export function addArticle(payload) {
-  return { type: ADD_ARTICLE, payload }
-};
+let nextMessageId = 0
+const nextUserId = 0
+
+export const addMessage = (message, author) => ({
+  type: types.ADD_MESSAGE,
+  id: nextMessageId++,
+  message,
+  author
+})
+
+export const addUser = name => ({
+  type: types.ADD_USER,
+  id: nextUserId++,
+  name
+})
+
+export const messageReceieved = (message, author) => ({
+  type: types.MESSAGE_RECEIVED,
+  id: nextMessageId++,
+  message,
+  author
+})
+
+export const populateUsersList = users => ({
+  type: types.USERS_LIST,
+  USERS
+})

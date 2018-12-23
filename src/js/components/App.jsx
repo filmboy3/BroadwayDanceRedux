@@ -1,18 +1,20 @@
-import React from "react";
-import List from "./List.jsx";
-import Form from "./Form.jsx";
+import React, { Component } from "react";
+import { Sidebar } from "../containers/Sidebar";
+import { MessagesList } from "../containers/MessagesList";
+import { AddMessage } from "../containers/AddMessage";
 
-const App = () => (
-  <div className-="row mt-5">
-    <div className="col-md-4 offset-md-1">
-      <h2>Articles</h2>
-      <List />
-    </div>
-    <div className="col-md-4 offset-md-1">
-      <h2>Add a new article</h2>
-      <Form />
-    </div>
-  </div>
-);
+class App extends Component {
+  render() {
+    return (
+      <div id="container">
+        <Sidebar />
+        <section id="main">
+          <MessagesList />
+          <AddMessage />
+        </section>
+      </div>
+    )
+  }
+}
 
 export default App;
