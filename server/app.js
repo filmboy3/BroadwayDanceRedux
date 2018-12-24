@@ -1,8 +1,20 @@
 const WebSocket = require('ws');
+const controllerMongo = require("./mongoController");
 
 const wss = new WebSocket.Server({ port: 8989 });
+const PORT = process.env.PORT || "2468";
 
 const users = [];
+
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const express = require('express');
+const app = express();
+app.use(express.static("dist"));
+app.use(cors());
+app.use(bodyParser.json());
+app.get("/db", controllerMongo.getDatabase);
+
 
 const broadcast = (data, ws) => {
   wss.clients.forEach((client) => {
@@ -50,3 +62,7 @@ wss.on('connection', (ws) => {
         }, ws)
       })
     })
+
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+})
