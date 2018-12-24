@@ -6,3 +6,13 @@
           </section>
       </div>
       </div> 
+
+
+       <div id="container">
+          <Sidebar />
+                <section id="main">
+                  <MessagesList />
+                  <AddMessage />
+                  <a href="javascript:void(0);" onClick={() => this.closeModal()}>End Conversation</a>
+                </section>
+            </div>

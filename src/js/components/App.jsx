@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Modal from 'react-awesome-modal';
+import _ from 'lodash'
+import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
 import { Sidebar } from "../containers/Sidebar";
 import { MessagesList } from "../containers/MessagesList";
 import { AddMessage } from "../containers/AddMessage";
@@ -8,46 +9,41 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false
+      showModal: false
     }
   }
 
-  openModal() {
-    this.setState({
-      visible: true
-    });
+  handleCreateButton(evt) {
+    evt.preventDefault()
+    this.closeModal();
   }
 
-  closeModal() {
-    this.setState({
-      visible: false
-    });
+  closeModal = () => {
+    this.setState({ showModal: false })
   }
 
   render() {
+    const {
+      showModal
+    } = this.state;
+
+    let name = "Jonathan";
     return (
-      <section>
-        <h1> REACT-Modal Examples</h1>
-        <input type="button" value="Open" onClick={() => this.openModal()} />
-        <Modal
-          width= "100%"
-          height= "100%"
-          visible={this.state.visible}
-          effect="fadeInUp"
-          onClickAway={() => this.closeModal()}
-        >
-          <div>
-          <div id="container">
-          <Sidebar />
-                <section id="main">
-                  <MessagesList />
-                  <AddMessage />
-                  <a href="javascript:void(0);" onClick={() => this.closeModal()}>End Conversation</a>
-                </section>
-            </div>
-          </div>
-        </Modal>
-      </section>
+    
+      <Modal onClose={this.closeModal} open={showModal} trigger={<Button onClick={() => this.setState({ showModal: true })}>Chat with Us</Button>}>
+        <Modal.Header>Chat with {name} from BDT</Modal.Header>
+        <Modal.Content image scrolling>
+          <section>
+            <MessagesList />
+            <AddMessage />
+          </section>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button onClick={() => this.setState({ showModal: false })} primary>
+            Proceed <Icon name='chevron right' />
+          </Button>
+        </Modal.Actions>
+      </Modal>
     )
   }
 }
