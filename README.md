@@ -1,1 +1,1 @@
-## This is a current React/Redux project by JPS Designs (for an award-winning Dance Studio in NJ). 
+## This is the modalChatBox branch of React/Redux project by JPS Designs (for an award-winning Dance Studio in NJ). 
