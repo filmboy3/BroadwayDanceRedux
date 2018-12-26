@@ -14,18 +14,15 @@ setInterval(() => {
 
 module.exports = {
   chatAdminLogin(req, res) {
-    console.log("chatAdminLogin triggered.");
-    db.any(`SELECT chat FROM "public"."chat" where password = '${req.query.pword}';`)
+    db.any(`SELECT chat FROM chat where password = '${req.query.pword}';`)
     .then(data => {
       console.log("Data pre Update:", data);
       if (data[0].chat !== true) {
-        return db.any(`UPDATE "public"."chat"
+        return db.any(`UPDATE chat
         SET chat = true RETURNING chat;`);
-        // console.log("Updated from false to true"); 
       } else {
-        return db.any(`UPDATE "public"."chat"
+        return db.any(`UPDATE chat
         SET chat = false RETURNING chat;`);
-        // console.log("Updated from true to false");
       }
     })
     .then(data => {
@@ -33,5 +30,21 @@ module.exports = {
         res.send(JSON.stringify(data[0].chat));
       })
     .catch((err) => console.log('getChatError', err));
+  },
+  adminChangePassword(req, res) {
+    console.log("\nNewpword1: ", req.body.newpword1);
+    console.log("\nNewpword2: ", req.body.newpword2);
+    console.log("\noldpword: ", req.body.oldpword);
+
+      if (req.body.newpword1 !== req.body.newpword2) {
+        res.json({error: "Passwords do not match"});
+      }
+    return db.any(`UPDATE chat
+        SET password = '${req.body.newpword1}' where password = '${req.body.oldpword}' RETURNING password;`)
+    .then(data => {
+      res.json({success: "Successfully Updated Password"});
+    })
+    .catch((err) =>  res.json({error: "Error Changing Password"})
+    );
   }
 }
