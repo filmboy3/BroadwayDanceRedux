@@ -1,5 +1,5 @@
 const WebSocket = require('ws');
-const controllerMongo = require("./mongoController");
+const pgController = require("./pgController");
 
 const wss = new WebSocket.Server({ port: 8989 });
 const PORT = process.env.PORT || "2468";
@@ -13,7 +13,7 @@ const app = express();
 app.use(express.static("dist"));
 app.use(cors());
 app.use(bodyParser.json());
-app.get("/db", controllerMongo.getDatabase);
+app.get("/db", pgController.chatAdminLogin);
 
 
 const broadcast = (data, ws) => {
