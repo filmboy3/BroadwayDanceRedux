@@ -24,7 +24,7 @@ class App extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
 
   handleSubmit = () => {
-    let url = `http://localhost:2468/adminLogin?pword=${this.state.password}`;
+    let url = `http://localhost:2468/adminLogin?pword=${this.state.password}&name=${this.state.name}`;
     fetch(url, {
       headers: { "Content-Type": "application/json; charset=utf-8" },
       method: "GET"

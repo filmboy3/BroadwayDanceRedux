@@ -3,6 +3,10 @@
 const pgPromise = require('pg-promise');
 const pgp = pgPromise({ capSQL: true });
 const db = pgp('postgres://tnliuhzl:d8OcuFX0WtQRhoC6uLOlLuQaOOeoWCMP@baasu.db.elephantsql.com:5432/tnliuhzl');
+const jwt = require('jsonwebtoken');
+let config = require('./config');
+let middleware = require('./middleware');
+let tokenCached;
 
 //expire a connection after an hour (runs each 20min)
 let connections = {};
@@ -19,9 +23,21 @@ module.exports = {
       if (data.length === 0) {
         res.json({result: "Incorrect Login"});
       } else {
-        res.json({result: "success"});
-      }
-      console.log("Correct Login", data); 
+        let token = jwt.sign({adminName: req.query.name},
+        config.secret,
+        { 
+          expiresIn: '1h' // expires in 24 hours
+        }
+      );
+      // return the JWT for future calls
+        tokenCached = token;
+        console.log("Correct Token Login", token); 
+        res.json({
+          success: true,
+          message: 'Authentication successful!',
+          token: token
+        });
+      } 
     })
     .catch((err) => res.json({result: "error"}));
   },
