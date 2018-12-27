@@ -4,6 +4,7 @@ import { Sidebar } from "../containers/Sidebar";
 import { MessagesList } from "../containers/MessagesList";
 import { AddMessage } from "../containers/AddMessage";
 import { adminLogin } from '../actions';
+import { withCookies, Cookies } from 'react-cookie';
 import store from "../../index";
 import { connect } from "react-redux";
 
@@ -12,7 +13,9 @@ import ReactDOM from "react-dom";
 class App extends Component {
   constructor(props) {
     super(props);
+    const { cookies } = props;
     this.state = {
+      token: cookies.get('tokenInfo') || [0, 'NoAdmin'],
       showModal: false,
       password: '',
       name: 'staff'
@@ -24,6 +27,7 @@ class App extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
 
   handleSubmit = () => {
+    const { cookies } = this.props;
     let url = `http://localhost:2468/adminLogin?pword=${this.state.password}&name=${this.state.name}`;
     fetch(url, {
       headers: { "Content-Type": "application/json; charset=utf-8" },
@@ -33,9 +37,10 @@ class App extends Component {
     .then(res => {
       console.log("Login Attempted.");
       console.log("Res: ", res);
-      if (res.result == "success") {
-        console.log("Triggered success dispatch...")
-        store.dispatch(adminLogin())
+
+      if (res.success) {
+        console.log("Triggered success saving of JWT token to cookie on client with token: ", res.token);
+        cookies.set('tokenInfo', res.token);
       }
     })
     this.setState({ password: ''})
@@ -104,4 +109,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withCookies(App);

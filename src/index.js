@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-
+import { CookiesProvider } from 'react-cookie';
 import "./main.css";
 import App from "./js/components/App.jsx";
 import registerServiceWorker from './registerServiceWorker';
@@ -25,7 +25,9 @@ sagaMiddleware.run(handleNewMessage, { socket, username })
 
 ReactDOM.render(
   <Provider store={store}>
+    <CookiesProvider>
     <App />
+    </CookiesProvider>
   </Provider>,
   document.getElementById('root')
 )

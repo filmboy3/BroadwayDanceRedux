@@ -53,6 +53,7 @@
     "react-awesome": "0.0.2",
     "react-awesome-modal": "^2.0.5",
     "react-bootstrap-modal": "^4.2.0",
+    "react-cookie": "^3.0.8",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
     "react-scripts": "1.0.14",
