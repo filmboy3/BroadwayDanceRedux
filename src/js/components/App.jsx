@@ -30,7 +30,26 @@ class App extends Component {
     let name = "Jonathan";
     return (
     
-      <Modal onClose={this.closeModal} open={showModal} trigger={<Button onClick={() => this.setState({ showModal: true })}>Chat with Us</Button>}>
+      <Modal onClose={this.closeModal} open={showModal} trigger={<Button onClick={() => {
+        fetch('http://localhost:2468/chatCheck', {
+            headers: { "Content-Type": "application/json; charset=utf-8" },
+            method: "GET",
+        })
+        .then(res => {return res.json()})
+        .then(res => {
+          if (res.chat == false) {
+            console.log("Too many chatters");
+            alert("Sorry, staff members are busy with other BDT customers at this time. Please email Lorinda at ");
+            return
+          } else if (res.chat == true) {
+             this.setState({ showModal: true })
+          }
+          console.log("Res: ", res);
+        })
+        }
+      }
+      >Live Chat with Staff</Button>}>
+
         <Modal.Header>Chat with {name} from BDT</Modal.Header>
         <Modal.Content image scrolling>
           <section>

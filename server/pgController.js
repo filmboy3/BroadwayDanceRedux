@@ -31,11 +31,14 @@ module.exports = {
       })
     .catch((err) => console.log('getChatError', err));
   },
+  chatCheck(req, res) {
+    return db.any(`SELECT chat, guestnum FROM chat`)
+    .then(data => {
+      res.send(JSON.stringify(data[0]))
+    })
+    .catch((err) => console.log('chatCheckError', err));
+  },
   adminChangePassword(req, res) {
-    console.log("\nNewpword1: ", req.body.newpword1);
-    console.log("\nNewpword2: ", req.body.newpword2);
-    console.log("\noldpword: ", req.body.oldpword);
-
       if (req.body.newpword1 !== req.body.newpword2) {
         res.json({error: "Passwords do not match"});
       }
@@ -46,5 +49,6 @@ module.exports = {
     })
     .catch((err) =>  res.json({error: "Error Changing Password"})
     );
-  }
+  },
+
 }
