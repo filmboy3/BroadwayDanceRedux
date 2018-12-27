@@ -59,7 +59,7 @@ class App extends Component {
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={() => this.setState({ showModal: false })} primary>
-            Proceed <Icon name='chevron right' />
+            Leave Chat <Icon name='chevron right' />
           </Button>
         </Modal.Actions>
       </Modal>
