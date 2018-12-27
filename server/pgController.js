@@ -13,7 +13,20 @@ setInterval(() => {
 }, 1200000)
 
 module.exports = {
-  chatAdminLogin(req, res) {
+  adminLogin(req, res) {
+    db.any(`SELECT chat FROM chat where password = '${req.query.pword}';`)
+    .then(data => {
+      if (data.length === 0) {
+        res.json({result: "Incorrect Login"});
+      } else {
+        res.json({result: "success"});
+      }
+      console.log("Correct Login", data); 
+    })
+    .catch((err) => res.json({result: "error"}));
+  },
+
+  toggleChat(req, res) {
     db.any(`SELECT chat FROM chat where password = '${req.query.pword}';`)
     .then(data => {
       console.log("Data pre Update:", data);

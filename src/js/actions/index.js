@@ -27,3 +27,7 @@ export const populateUsersList = users => ({
 	type: types.USERS_LIST,
 	users
 })
+
+export const adminLogin = () => ({
+	type: types.ADMIN_LOGIN,
+})

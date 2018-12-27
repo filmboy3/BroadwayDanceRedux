@@ -14,7 +14,9 @@ app.use(express.static("dist"));
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/chatAdmin", pgController.chatAdminLogin);
+app.get("/adminLogin", pgController.adminLogin);
+
+app.get("/toggleChat", pgController.toggleChat);
 
 app.post("/passwordAdmin", pgController.adminChangePassword);
 
