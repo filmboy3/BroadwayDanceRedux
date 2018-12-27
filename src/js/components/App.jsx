@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import { Button, Header, Icon, Image, Modal, Form } from 'semantic-ui-react'
-import { Sidebar } from "../containers/Sidebar";
 import { MessagesList } from "../containers/MessagesList";
 import { AddMessage } from "../containers/AddMessage";
-import { adminLogin } from '../actions';
 import { withCookies, Cookies } from 'react-cookie';
-import store from "../../index";
-import { connect } from "react-redux";
 
 import ReactDOM from "react-dom";
 
@@ -15,7 +11,7 @@ class App extends Component {
     super(props);
     const { cookies } = props;
     this.state = {
-      token: cookies.get('tokenInfo') || [0, 'NoAdmin'],
+      token: cookies.get('tokenInfo') || [0],
       showModal: false,
       password: '',
       name: 'staff'
@@ -104,6 +100,20 @@ class App extends Component {
       <Form.Button content='Staff Login' />
     </Form.Group>
   </Form>
+
+  <Button onClick={() => {
+    let url = `http://localhost:2468/toggleChat?token=${this.state.token}`;
+    
+
+    fetch(url, {
+            headers: { "Content-Type": "application/json; charset=utf-8" },
+            method: "GET",
+    })
+    .then(res => {return res.json()})
+    .then(res => console.log(res));
+  }} primary>
+            Turn Off Chat <Icon name='chevron right' />
+  </Button>
       </div>
     )
   }

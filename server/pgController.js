@@ -43,7 +43,7 @@ module.exports = {
   },
 
   toggleChat(req, res) {
-    db.any(`SELECT chat FROM chat where password = '${req.query.pword}';`)
+    db.any(`SELECT chat FROM chat;`)
     .then(data => {
       console.log("Data pre Update:", data);
       if (data[0].chat !== true) {

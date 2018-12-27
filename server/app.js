@@ -1,5 +1,6 @@
 const WebSocket = require('ws');
 const pgController = require("./pgController");
+const middleware = require("./middleware");
 
 const wss = new WebSocket.Server({ port: 8989 });
 const PORT = process.env.PORT || "2468";
@@ -17,7 +18,7 @@ app.use(bodyParser.json());
 
 app.get("/adminLogin", pgController.adminLogin);
 
-app.get("/toggleChat", pgController.toggleChat);
+app.get("/toggleChat", middleware.checkToken, pgController.toggleChat);
 
 app.post("/passwordAdmin", pgController.adminChangePassword);
 
