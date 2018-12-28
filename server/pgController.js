@@ -41,7 +41,7 @@ module.exports = {
     })
     .catch((err) => res.json({result: "error"}));
   },
-
+  
   toggleChat(req, res) {
     db.any(`SELECT chat FROM chat;`)
     .then(data => {
