@@ -11,7 +11,8 @@ import reducers from './js/reducers';
 import handleNewMessage from './js/sagas';
 import setupSocket from './js/sockets';
 import username from './js/utils/name';
-
+// import username from './js/components/App.jsx';
+console.log("Here is username: ", username);
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(

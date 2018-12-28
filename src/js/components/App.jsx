@@ -119,7 +119,7 @@ class App extends Component {
       >Live Chat with Staff
     </Button>}>
 
-        <Modal.Header>Chat with {name} from BDT</Modal.Header>
+        <Modal.Header>Chat with BDT</Modal.Header>
         <Modal.Content image scrolling>
           <section>
             <MessagesList />

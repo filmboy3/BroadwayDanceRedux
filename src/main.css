@@ -12,6 +12,10 @@ body {
   font-family: "Press Start 2P";
 }
 
+i {
+  font-style: normal !important;
+}
+
 #container {
   position: absolute;
   width: 100%;
