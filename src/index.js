@@ -14,6 +14,7 @@ import username from './js/utils/name';
 // import username from './js/components/App.jsx';
 console.log("Here is username: ", username);
 const sagaMiddleware = createSagaMiddleware();
+import { BrowserRouter } from 'react-router-dom';
 
 const store = createStore(
   reducers,
@@ -26,9 +27,11 @@ sagaMiddleware.run(handleNewMessage, { socket, username })
 
 ReactDOM.render(
   <Provider store={store}>
-    <CookiesProvider>
-    <App />
-    </CookiesProvider>
+    <BrowserRouter>
+      <CookiesProvider>
+        <App />
+      </CookiesProvider>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 )
