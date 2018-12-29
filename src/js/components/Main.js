@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import App from './App.jsx';
 import Policies from './Policies';
 import News from './News';
+import App from './App.jsx';
 import Advantage from './Advantage';
 import Faculty from './Faculty';
 import Calendar from './Calendar';
@@ -17,7 +17,6 @@ import Contact from './Contact';
 const Main = () => (
     <main>
         <Switch>
-            <Route exact path='/' component={App}/>
             <Route path='/policies' component={Policies}/>
             <Route path='/news' component={News}/>
             <Route path='/advantage' component={Advantage}/>

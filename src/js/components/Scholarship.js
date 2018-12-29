@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Scholarship = () => {
+const Scholarships = () => (
     <div>
-        <h1>Scholarship PLACEHOLDER</h1>
+        <h1>Scholarships PLACEHOLDER</h1>
     </div>
-}
+)
 
-export default Scholarship;
+export default Scholarships;

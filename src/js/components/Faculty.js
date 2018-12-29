@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Faculty = () => {
+const Faculty = () => (
     <div>
         <h1>Faculty PLACEHOLDER</h1>
     </div>
-}
+)
 
 export default Faculty;

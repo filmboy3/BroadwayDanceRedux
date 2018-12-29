@@ -27,11 +27,11 @@ sagaMiddleware.run(handleNewMessage, { socket, username })
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
       <CookiesProvider>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </CookiesProvider>
-    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 )

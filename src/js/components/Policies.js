@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Placeholder = () => {
+const Policies = () => (
     <div>
-        <h1>Placeholder PLACEHOLDER</h1>
+        <h1>Policies PLACEHOLDER</h1>
     </div>
-}
+)
 
-export default Placeholder;
+export default Policies;
