@@ -30,6 +30,7 @@ class App extends Component {
       this.state = {
         token: [],
         showModal: false,
+        showFacultyModal: false,
         password: '',
         errorMessage: 'Something went wrong...',
         name: '',
@@ -41,6 +42,8 @@ class App extends Component {
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.adminLogout = this.adminLogout.bind(this);
+      this.closeFacultyModal = this.closeFacultyModal.bind(this);
+      this.closeModal = this.closeModal.bind(this);
     }
   
     show = (message) => this.setState({ 
@@ -99,21 +102,31 @@ class App extends Component {
       evt.preventDefault()
       this.closeModal();
     }
+
+    handleCreateFacultyButton(evt) {
+      evt.preventDefault()
+      this.closeFacultyModal();
+    }
   
     closeModal = () => {
       this.setState({ showModal: false })
     }
+    closeFacultyModal = () => {
+      this.setState({ showFacultyModal: false })
+    }
   
     render() {
       const {
-        showModal, name, password
+        showModal, showFacultyModal, name, password
       } = this.state;
       
 return (
   
     <div id="container">
       <Heading />
-      <Modal onClose={this.closeModal} open={showModal} trigger={<Button>Faculty Only</Button>}>
+      <Modal onClose={this.closeFacultyModal} open={showFacultyModal} trigger={<Button onClick={() => {
+         this.setState({ showFacultyModal: true })
+        }}>Faculty Only</Button>}>
         <Modal.Header>BDT Faculty Login</Modal.Header>
         <Modal.Content>
         <Form onSubmit={this.handleSubmit}>
@@ -151,7 +164,7 @@ return (
   <Button onClick={this.adminLogout}>Logout Admin</Button>
         </Modal.Content>
         <Modal.Actions>
-          <Button icon='check' content='All Done' onClick={this.close} />
+          <Button icon='check' content='All Done' onClick={() => this.setState({ showFacultyModal: false })} />
         </Modal.Actions>
       </Modal>
 
