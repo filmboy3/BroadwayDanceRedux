@@ -113,23 +113,56 @@ return (
   
     <div id="container">
       <Heading />
-      <main>
-        <Switch>
-            <Route path='/policies' component={Policies}/>
-            <Route path='/news' component={News}/>
-            <Route path='/advantage' component={Advantage}/>
-            <Route path='/faculty' component={Faculty}/>
-            <Route path='/calendar' component={Calendar}/>
-            <Route path='/curriculum' component={Curriculum}/>
-            <Route path='/summer' component={Summer}/>
-            <Route path='/nutcracker' component={Nutcracker}/>
-            <Route path='/companies' component={Companies}/>
-            <Route path='/musicals' component={Musicals}/>
-            <Route path='/scholarship' component={Scholarship}/>
-            <Route path='/contact' component={Contact}/>
-        </Switch>
-    </main>
-      <Modal onClose={this.closeModal} open={showModal} trigger={<Button onClick={() => {
+      <Modal onClose={this.closeModal} open={showModal} trigger={<Button>Faculty Only</Button>}>
+        <Modal.Header>BDT Faculty Login</Modal.Header>
+        <Modal.Content>
+        <Form onSubmit={this.handleSubmit}>
+    <Form.Group>
+      <Form.Input placeholder='BDT Staff Name' name='name' value={name} onChange={this.handleChange} />
+      <Form.Input placeholder='Password' name='password' value={password} onChange={this.handleChange} />
+      <Form.Button content='Staff Login' />
+    </Form.Group>
+  </Form>
+
+  <Button onClick={() => {
+    let url = `http://localhost:2468/toggleChat?token=${this.state.token}`;
+    fetch(url, {
+            headers: { "Content-Type": "application/json; charset=utf-8" },
+            method: "GET",
+    })
+    .then(res => {return res.json()})
+    .then(res => {
+        if (res.success === false) {
+          this.show("For security purposes, please login again.");
+        } else {
+          if (res === true) {
+            this.show(`You are now available in Chat.`);
+          } else {
+            this.show(`You are now unavailable for Chat.`);
+          }
+        }
+        console.log(res)
+      });
+  }} primary>
+            Toggle Chat <Icon name='chevron right' />
+  </Button>
+
+
+  <Button onClick={this.adminLogout}>Logout Admin</Button>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button icon='check' content='All Done' onClick={this.close} />
+        </Modal.Actions>
+      </Modal>
+
+  <Confirm
+          open={this.state.open}
+          content={this.state.errorMessage}
+          onCancel={this.handleConfirm}
+          onConfirm={this.handleConfirm}
+          confirmButton="Back to BDT"
+    />
+             <Modal onClose={this.closeModal} open={showModal} trigger={<Button onClick={() => {
         fetch('http://localhost:2468/chatCheck', {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: "GET",
@@ -163,47 +196,25 @@ return (
           </Button>
         </Modal.Actions>
       </Modal>
-  
-  <Form onSubmit={this.handleSubmit}>
-    <Form.Group>
-      <Form.Input placeholder='BDT Staff Name' name='name' value={name} onChange={this.handleChange} />
-      <Form.Input placeholder='Password' name='password' value={password} onChange={this.handleChange} />
-      <Form.Button content='Staff Login' />
-    </Form.Group>
-  </Form>
 
-  <Button onClick={() => {
-    let url = `http://localhost:2468/toggleChat?token=${this.state.token}`;
-    
 
-    fetch(url, {
-            headers: { "Content-Type": "application/json; charset=utf-8" },
-            method: "GET",
-    })
-    .then(res => {return res.json()})
-    .then(res => {
-        if (res.success === false) {
-          this.show("For security purposes, please login again.");
-        } else {
-          if (res === true) {
-            this.show(`You are now available in Chat.`);
-          } else {
-            this.show(`You are now unavailable for Chat.`);
-          }
-        }
-        console.log(res)
-      });
-  }} primary>
-            Toggle Chat <Icon name='chevron right' />
-  </Button>
-  <Confirm
-          open={this.state.open}
-          content={this.state.errorMessage}
-          onCancel={this.handleConfirm}
-          onConfirm={this.handleConfirm}
-          confirmButton="Back to BDT"
-    />
-  <Button onClick={this.adminLogout}>Logout Admin</Button>
+  <main>
+        <Switch>
+            <Route path='/policies' component={Policies}/>
+            <Route path='/news' component={News}/>
+            <Route path='/advantage' component={Advantage}/>
+            <Route path='/faculty' component={Faculty}/>
+            <Route path='/calendar' component={Calendar}/>
+            <Route path='/curriculum' component={Curriculum}/>
+            <Route path='/summer' component={Summer}/>
+            <Route path='/nutcracker' component={Nutcracker}/>
+            <Route path='/companies' component={Companies}/>
+            <Route path='/musicals' component={Musicals}/>
+            <Route path='/scholarship' component={Scholarship}/>
+            <Route path='/contact' component={Contact}/>
+        </Switch>
+    </main>
+
             </div>
         )
     }
