@@ -1,5 +1,4 @@
 import { Button, Header, Icon, Image, Modal, Form, Confirm } from 'semantic-ui-react'
-import { Link } from 'react-router-dom';
 import React, { Component } from "react";
 import { MessagesList } from "../containers/MessagesList";
 import { AddMessage } from "../containers/AddMessage";
