@@ -1,4 +1,4 @@
-import { Button, Header, Icon, Image, Modal, Form, Confirm } from 'semantic-ui-react'
+import { Button, Header, Icon, Divider, Image, Modal, Container, Grid, List, Form, Confirm, Segment } from 'semantic-ui-react'
 import React, { Component } from "react";
 import { MessagesList } from "../containers/MessagesList";
 import { AddMessage } from "../containers/AddMessage";
@@ -30,6 +30,7 @@ class App extends Component {
       this.state = {
         token: [],
         showModal: false,
+        showFacultyModal: false,
         password: '',
         errorMessage: 'Something went wrong...',
         name: '',
@@ -41,6 +42,8 @@ class App extends Component {
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.adminLogout = this.adminLogout.bind(this);
+      this.closeFacultyModal = this.closeFacultyModal.bind(this);
+      this.closeModal = this.closeModal.bind(this);
     }
   
     show = (message) => this.setState({ 
@@ -99,37 +102,38 @@ class App extends Component {
       evt.preventDefault()
       this.closeModal();
     }
+
+    handleCreateFacultyButton(evt) {
+      evt.preventDefault()
+      this.closeFacultyModal();
+    }
   
     closeModal = () => {
       this.setState({ showModal: false })
     }
+    closeFacultyModal = () => {
+      this.setState({ showFacultyModal: false })
+    }
   
     render() {
       const {
-        showModal, name, password
+        showModal, showFacultyModal, name, password
       } = this.state;
       
 return (
   
     <div id="container">
       <Heading />
-      <main>
-        <Switch>
-            <Route path='/policies' component={Policies}/>
-            <Route path='/news' component={News}/>
-            <Route path='/advantage' component={Advantage}/>
-            <Route path='/faculty' component={Faculty}/>
-            <Route path='/calendar' component={Calendar}/>
-            <Route path='/curriculum' component={Curriculum}/>
-            <Route path='/summer' component={Summer}/>
-            <Route path='/nutcracker' component={Nutcracker}/>
-            <Route path='/companies' component={Companies}/>
-            <Route path='/musicals' component={Musicals}/>
-            <Route path='/scholarship' component={Scholarship}/>
-            <Route path='/contact' component={Contact}/>
-        </Switch>
-    </main>
-      <Modal onClose={this.closeModal} open={showModal} trigger={<Button onClick={() => {
+
+  <Confirm
+          open={this.state.open}
+          content={this.state.errorMessage}
+          onCancel={this.handleConfirm}
+          onConfirm={this.handleConfirm}
+          confirmButton="OK"
+          cancelButton="Back to BDT"
+    />
+             <Modal onClose={this.closeModal} open={showModal} trigger={<Button onClick={() => {
         fetch('http://localhost:2468/chatCheck', {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: "GET",
@@ -163,8 +167,62 @@ return (
           </Button>
         </Modal.Actions>
       </Modal>
-  
-  <Form onSubmit={this.handleSubmit}>
+
+
+  <main>
+        <Switch>
+            <Route path='/policies' component={Policies}/>
+            <Route path='/news' component={News}/>
+            <Route path='/advantage' component={Advantage}/>
+            <Route path='/faculty' component={Faculty}/>
+            <Route path='/calendar' component={Calendar}/>
+            <Route path='/curriculum' component={Curriculum}/>
+            <Route path='/summer' component={Summer}/>
+            <Route path='/nutcracker' component={Nutcracker}/>
+            <Route path='/companies' component={Companies}/>
+            <Route path='/musicals' component={Musicals}/>
+            <Route path='/scholarship' component={Scholarship}/>
+            <Route path='/contact' component={Contact}/>
+        </Switch>
+    </main>
+      <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
+        <Container textAlign='center'>
+          <Grid divided inverted stackable>
+            <Grid.Column width={3}>
+              <Header inverted as='h4' content='Group 1' />
+              <List link inverted>
+                <List.Item as='a'>Link One</List.Item>
+                <List.Item as='a'>Link Two</List.Item>
+                <List.Item as='a'>Link Three</List.Item>
+                <List.Item as='a'>Link Four</List.Item>
+              </List>
+            </Grid.Column>
+            <Grid.Column width={3}>
+              <Header inverted as='h4' content='Group 2' />
+              <List link inverted>
+                <List.Item as='a'>Link One</List.Item>
+                <List.Item as='a'>Link Two</List.Item>
+                <List.Item as='a'>Link Three</List.Item>
+                <List.Item as='a'>Link Four</List.Item>
+              </List>
+            </Grid.Column>
+            <Grid.Column width={3}>
+              <Header inverted as='h4' content='Group 3' />
+              <List link inverted>
+                <List.Item as='a'>Link One</List.Item>
+                <List.Item as='a'>Link Two</List.Item>
+                <List.Item as='a'>Link Three</List.Item>
+                <List.Item as='a'>Link Four</List.Item>
+              </List>
+            </Grid.Column>
+            <Grid.Column width={7}>
+              <Header inverted as='h4' content='Footer Header' />
+              <Modal onClose={this.closeFacultyModal} open={showFacultyModal} trigger={<Button onClick={() => {
+         this.setState({ showFacultyModal: true })
+        }}>Faculty Login</Button>}>
+        <Modal.Header>BDT Faculty Login</Modal.Header>
+        <Modal.Content>
+        <Form onSubmit={this.handleSubmit}>
     <Form.Group>
       <Form.Input placeholder='BDT Staff Name' name='name' value={name} onChange={this.handleChange} />
       <Form.Input placeholder='Password' name='password' value={password} onChange={this.handleChange} />
@@ -172,10 +230,10 @@ return (
     </Form.Group>
   </Form>
 
+        </Modal.Content>
+        <Modal.Actions>
   <Button onClick={() => {
     let url = `http://localhost:2468/toggleChat?token=${this.state.token}`;
-    
-
     fetch(url, {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: "GET",
@@ -196,15 +254,33 @@ return (
   }} primary>
             Toggle Chat <Icon name='chevron right' />
   </Button>
-  <Confirm
-          open={this.state.open}
-          content={this.state.errorMessage}
-          onCancel={this.handleConfirm}
-          onConfirm={this.handleConfirm}
-          confirmButton="Back to BDT"
-    />
+
+
   <Button onClick={this.adminLogout}>Logout Admin</Button>
-            </div>
+          <Button icon='check' content='All Done' onClick={() => this.setState({ showFacultyModal: false })} />
+        </Modal.Actions>
+      </Modal>
+            </Grid.Column>
+          </Grid>
+
+          <Divider inverted section />
+          <List horizontal inverted divided link size ='small'>
+              <List.Item as='a' href='#'>
+                Site Map
+              </List.Item>
+              <List.Item as='a' href='#'>
+                Contact Us
+              </List.Item>
+              <List.Item as='a' href='#'>
+                Terms and Conditions
+              </List.Item>
+              <List.Item as='a' href='#'>
+                Privacy Policy
+              </List.Item>
+          </List>
+        </Container>
+      </Segment>
+    </div>
         )
     }
 }
