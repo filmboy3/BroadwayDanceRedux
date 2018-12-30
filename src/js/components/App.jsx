@@ -17,7 +17,7 @@ import Companies from './Companies';
 import Musicals from './Musicals';
 import Scholarship from './Scholarship';
 import Contact from './Contact';
-import BDT_color from './assets/BDT_color.mp4'
+import BDT_light from './assets/BDT_light.mp4'
 
 class App extends Component {
     constructor(props) {
@@ -172,7 +172,7 @@ return (
 
   <main>
   <video className='videoTag' autoPlay loop muted>
-      <source src={BDT_color} type='video/mp4' />
+      <source src={BDT_light} type='video/mp4' />
     </video>
         <Switch>
             <Route path='/policies' component={Policies}/>
