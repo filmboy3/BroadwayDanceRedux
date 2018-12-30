@@ -21,6 +21,10 @@ module.exports = {
         ]
       },
       {
+        test: /\.mp4$/,
+        loader: 'file-loader?limit=10000&mimetype=video/mp4'
+      },
+      {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       }

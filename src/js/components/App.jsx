@@ -17,6 +17,7 @@ import Companies from './Companies';
 import Musicals from './Musicals';
 import Scholarship from './Scholarship';
 import Contact from './Contact';
+import BDT_light from './assets/BDT_light.mp4'
 
 class App extends Component {
     constructor(props) {
@@ -34,8 +35,7 @@ class App extends Component {
         password: '',
         errorMessage: 'Something went wrong...',
         name: '',
-        open: false,
-        videoURL: 'https://www.youtube.com/watch?v=XsrZHe83VUQ'
+        open: false
       }
       this.show = this.show.bind(this);
       this.handleConfirm = this.handleConfirm.bind(this);
@@ -124,6 +124,7 @@ return (
   
     <div id="container">
       <Heading />
+    
 
   <Confirm
           open={this.state.open}
@@ -170,6 +171,9 @@ return (
 
 
   <main>
+  <video className='videoTag' autoPlay loop muted>
+      <source src={BDT_light} type='video/mp4' />
+    </video>
         <Switch>
             <Route path='/policies' component={Policies}/>
             <Route path='/news' component={News}/>
@@ -185,39 +189,28 @@ return (
             <Route path='/contact' component={Contact}/>
         </Switch>
     </main>
-      <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
+      <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }} id="foot">
         <Container textAlign='center'>
           <Grid divided inverted stackable>
-            <Grid.Column width={3}>
-              <Header inverted as='h4' content='Group 1' />
-              <List link inverted>
-                <List.Item as='a'>Link One</List.Item>
-                <List.Item as='a'>Link Two</List.Item>
-                <List.Item as='a'>Link Three</List.Item>
-                <List.Item as='a'>Link Four</List.Item>
-              </List>
-            </Grid.Column>
-            <Grid.Column width={3}>
-              <Header inverted as='h4' content='Group 2' />
-              <List link inverted>
-                <List.Item as='a'>Link One</List.Item>
-                <List.Item as='a'>Link Two</List.Item>
-                <List.Item as='a'>Link Three</List.Item>
-                <List.Item as='a'>Link Four</List.Item>
-              </List>
-            </Grid.Column>
-            <Grid.Column width={3}>
-              <Header inverted as='h4' content='Group 3' />
-              <List link inverted>
-                <List.Item as='a'>Link One</List.Item>
-                <List.Item as='a'>Link Two</List.Item>
-                <List.Item as='a'>Link Three</List.Item>
-                <List.Item as='a'>Link Four</List.Item>
-              </List>
-            </Grid.Column>
-            <Grid.Column width={7}>
-              <Header inverted as='h4' content='Footer Header' />
-              <Modal onClose={this.closeFacultyModal} open={showFacultyModal} trigger={<Button onClick={() => {
+
+
+          
+          <List horizontal inverted divided link size ='small'>
+              <List.Item as='a' href='#'>
+                Site Map
+              </List.Item>
+              <List.Item as='a' href='#'>
+                Contact Us
+              </List.Item>
+              <List.Item as='a' href='#'>
+                Terms and Conditions
+              </List.Item>
+              <List.Item as='a' href='#'>
+                Privacy Policy
+              </List.Item>
+              <List.Item>
+
+          <Modal onClose={this.closeFacultyModal} open={showFacultyModal} trigger={<Button onClick={() => {
          this.setState({ showFacultyModal: true })
         }}>Faculty Login</Button>}>
         <Modal.Header>BDT Faculty Login</Modal.Header>
@@ -260,24 +253,9 @@ return (
           <Button icon='check' content='All Done' onClick={() => this.setState({ showFacultyModal: false })} />
         </Modal.Actions>
       </Modal>
-            </Grid.Column>
-          </Grid>
-
-          <Divider inverted section />
-          <List horizontal inverted divided link size ='small'>
-              <List.Item as='a' href='#'>
-                Site Map
-              </List.Item>
-              <List.Item as='a' href='#'>
-                Contact Us
-              </List.Item>
-              <List.Item as='a' href='#'>
-                Terms and Conditions
-              </List.Item>
-              <List.Item as='a' href='#'>
-                Privacy Policy
               </List.Item>
           </List>
+          </Grid>
         </Container>
       </Segment>
     </div>

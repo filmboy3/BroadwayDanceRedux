@@ -14,7 +14,7 @@ export default class Heading extends Component {
 
         return (
             <div>
-                <Menu pointing secondary>
+                <Menu pointing secondary id="topMenu">
                     <Link to='/'>
                         <Menu.Item
                             name='home' 
