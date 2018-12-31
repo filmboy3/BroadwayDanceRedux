@@ -1,12 +1,49 @@
 import React from 'react';
 import { Grid, Image, Label, Segment, Card } from 'semantic-ui-react';
 import lorinda from './assets/lorinda.png';
-import laura from './assets/laura.png';
 import stacey from './assets/stacey.png';
-import shelly from './assets/shelly.png';
 import amy from './assets/amy.png';
 import jess from './assets/jess.png';
 import scott from './assets/scott.png';
+import scottfowler from './assets/scottfowler.png';
+import aaron from './assets/aaron.png';
+import elijah from './assets/elijah.png';
+import alyssa from './assets/alyssa.png';
+import amanda from './assets/amanda.png';
+import angela from './assets/angela.png';
+import courtney from './assets/courtney.png';
+import dana from './assets/dana.png';
+import emily from './assets/emily.png';
+import emilybufferd from './assets/emilybufferd.png';
+import erica from './assets/erica.png';
+import frank from './assets/frank.png';
+import frankie from './assets/frankie.png';
+import gianna from './assets/gianna.png';
+import heather from './assets/heather.png';
+import heatherdenges from './assets/heatherdenges.png';
+import irazema from './assets/irazema.png';
+import jeremy from './assets/jeremy.png';
+import jon from './assets/jon.png';
+import jordan from './assets/jordan.png';
+import jovonna from './assets/jovonna.png';
+import karen from './assets/karen.png';
+import katie from './assets/katie.png';
+import lauren from './assets/lauren.png';
+import linda from './assets/linda.png';
+import lindsey from './assets/lindsey.png';
+import mary from './assets/mary.png';
+import menina from './assets/menina.png';
+import rachelle from './assets/rachelle.png';
+import rhonda from './assets/rhonda.png';
+import laura from './assets/laura.png';
+import sarah from './assets/sarah.png';
+import sasha from './assets/sasha.png';
+import shana from './assets/shana.png';
+import shelly from './assets/shelly.png';
+import sherry from './assets/sherry.png';
+import stearns from './assets/stearns.png';
+import lance from './assets/lance.png';
+import danielle from './assets/danielle.png';
 import marinda from './assets/marinda.png';
 import { Carousel } from 'react-responsive-carousel';
 import "./carousel.min.css";
@@ -39,26 +76,65 @@ const Faculty = () => (
                 </Label>
                 <Segment className="facultyItem">
                     <Grid>
-                        <Grid.Row columns={5}>
-                            <Grid.Column>
+                        <Grid.Row columns={6}>
+                            <Grid.Column className="facultyImg">
                                         <h3>Marinda Davis</h3>
-                                    <Image class="facultyImg" src={marinda} />
+                                    <Image src={marinda} />
                             </Grid.Column>
-                            <Grid.Column>
+                            <Grid.Column className="facultyImg">
                                         <h3>Shelly Hutchinson</h3>
-                                    <Image class="facultyImg" src={shelly} />
+                                    <Image src={shelly} />
                             </Grid.Column>
-                            <Grid.Column>
+                            <Grid.Column className="facultyImg">
                                     <h3>Jess Hendricks</h3>
-                                    <Image class="facultyImg" src={jess} />
+                                    <Image src={jess} />
                             </Grid.Column>
-                            <Grid.Column>
+                            <Grid.Column className="facultyImg">
                                         <h3>Amy Schulke</h3>
-                                    <Image class="facultyImg" src={amy} />
+                                    <Image src={amy} />
                             </Grid.Column>
-                            <Grid.Column>
+                            <Grid.Column className="facultyImg">
                                         <h3>Scott Jovovich</h3>
-                                    <Image class="facultyImg" src={scott} />
+                                    <Image src={scott} />
+                            </Grid.Column>
+                            <Grid.Column className="facultyImg">
+                                        <h3>Danielle Guillermo</h3>
+                                    <Image src={danielle} />
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </Segment>
+            </Segment>
+            <Segment className="facultyContainer" raised>
+                <Label as='a' color='green' ribbon>
+                    Special Guests (Cont'd)
+                </Label>
+                <Segment className="facultyItem">
+                    <Grid>
+                        <Grid.Row columns={6}>
+                            <Grid.Column className="facultyImg">
+                                        <h3>Aaron Parkhurst</h3>
+                                    <Image src={aaron} />
+                            </Grid.Column>
+                            <Grid.Column className="facultyImg">
+                                        <h3>Elijah Morton</h3>
+                                    <Image src={elijah} />
+                            </Grid.Column>
+                            <Grid.Column className="facultyImg">
+                                    <h3>Gianna Martello</h3>
+                                    <Image src={gianna} />
+                            </Grid.Column>
+                            <Grid.Column className="facultyImg">
+                                        <h3>Menina Fortunato</h3>
+                                    <Image src={menina} />
+                            </Grid.Column>
+                            <Grid.Column className="facultyImg">
+                                        <h3>Emily Bufferd</h3>
+                                    <Image src={emilybufferd} />
+                            </Grid.Column>
+                            <Grid.Column className="facultyImg">
+                                        <h3>Rhonda Miller</h3>
+                                    <Image src={rhonda} />
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
