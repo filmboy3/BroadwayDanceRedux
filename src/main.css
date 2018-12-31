@@ -8,9 +8,6 @@
   margin: 0;
 }
 
-body {
-  font-family: "Press Start 2P";
-}
 
 i {
   font-style: normal !important;
@@ -45,6 +42,26 @@ i {
   }
 }
 
+.facultyContainer {
+  background: rgba(29, 27, 32, 0.7) !important;
+  text-align: left !important;
+  margin: 5% !important;
+}
+
+
+.facultyItem {
+  background: rgba(155, 80, 199, 0.3) !important;
+  text-align: left !important;
+  color: white;
+  text-shadow: 4px 4px 8px #303030;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+h3 {
+  font-family: 'Arvo', sans-serif;
+}
+
 #container {
   position: absolute;
   width: 100%;
@@ -68,6 +85,10 @@ i {
 
 #messages-list {
   padding: 5px 0 5% 5px;
+}
+
+.cursive {
+  font-family: 'Bad Script', cursive;
 }
 
 input {
@@ -99,7 +120,6 @@ input {
 #foot {
   position: absolute;
   right: 0;
-  bottom: 0;
   left: 0;
   padding: 1rem;
   text-align: center;
