@@ -21,6 +21,15 @@ module.exports = {
         ]
       },
       {
+        test: /\.(jpg|png)$/,
+        use: {
+          loader: "url-loader",
+          options: {
+            limit: 25000,
+          }
+        }
+      },
+      {
         test: /\.mp4$/,
         loader: 'file-loader?limit=10000&mimetype=video/mp4'
       },

@@ -8,9 +8,6 @@
   margin: 0;
 }
 
-body {
-  font-family: "Press Start 2P";
-}
 
 i {
   font-style: normal !important;
@@ -31,6 +28,15 @@ i {
   z-index: -100;
 }
 
+.facultyImg {
+  width: 150px !important;
+}
+
+img {
+  border: 3px solid #303030 !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 #topMenu {
   background-color: white !important;
 }
@@ -43,6 +49,26 @@ i {
   .videoTag {
       display: none;
   }
+}
+
+.facultyContainer {
+  background: rgba(29, 27, 32, 0.7) !important;
+  text-align: left !important;
+  margin: 5% !important;
+}
+
+
+.facultyItem {
+  background: rgba(155, 80, 199, 0.3) !important;
+  text-align: left !important;
+  color: white;
+  text-shadow: 4px 4px 8px #303030;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+h3 {
+  font-family: 'Arvo', sans-serif;
 }
 
 #container {
@@ -68,6 +94,10 @@ i {
 
 #messages-list {
   padding: 5px 0 5% 5px;
+}
+
+.cursive {
+  font-family: 'Bad Script', cursive;
 }
 
 input {
@@ -99,7 +129,6 @@ input {
 #foot {
   position: absolute;
   right: 0;
-  bottom: 0;
   left: 0;
   padding: 1rem;
   text-align: center;
