@@ -1,7 +1,13 @@
 import React from 'react';
-import { Grid, Image, Label, Segment } from 'semantic-ui-react';
+import { Grid, Image, Label, Segment, Card } from 'semantic-ui-react';
 import lorinda from './assets/lorinda.png';
 import laura from './assets/laura.png';
+import stacey from './assets/stacey.png';
+import shelly from './assets/shelly.png';
+import amy from './assets/amy.png';
+import jess from './assets/jess.png';
+import scott from './assets/scott.png';
+import marinda from './assets/marinda.png';
 import { Carousel } from 'react-responsive-carousel';
 import "./carousel.min.css";
 
@@ -25,6 +31,37 @@ const Faculty = () => (
                     <Image src={laura} size='small' floated='left' />
                     <h3>Company Choreographer</h3>
                     <p>Laura was born and bred right here at Broadway Dance Theater. She started in our very first Tumble Tots class, and went on to study every discipline of dance. Her passion to perform has led her to train at the Hollywood Summer Tour Intensive, The Rockette Summer Intensive, Broadway Dance Center in NYC, Peridance, and Starpower's Power Pak. Laura has also been cast in several musicals, which have added to her versatility as a dancer. In the dance competition world, Laura has won Overall awards, special judges awards and Title awards includeing Senior Miss Star Systems - 2014. Laura received the Dance Spirit Magazines "Future Star" award and was featured in the magazine during the fall of 2013. She has been awarded numerous scholarships for her work in master classes, conventions and auditions. As a choreographer, her work has already won top high scores at various competitions. In June of 2017, she made her New York City choreographic debut when her piece, "This Gift", was one of nine dances chosen from hundreds of submitted entries to be presented in the prestigious Young Choreographers Festival at Symphony Space in Manhattan. Laura received a BFA from the prestigious Commercial Dance Program at Dyson School of the Arts at PACE University, and has worked with incredible choreographers such as Mandy Moore, Scott Jovovich, Jess Hendricks, Jason Samuel Smith, Dee Caspary, and Chloe Arnold among many more. Laura is excited to take this next step and share her passon for dance with young BDT students.</p>
+                </Segment>
+            </Segment>
+            <Segment className="facultyContainer" raised>
+                <Label as='a' color='green' ribbon>
+                    Special Guests
+                </Label>
+                <Segment className="facultyItem">
+                    <Grid>
+                        <Grid.Row columns={5}>
+                            <Grid.Column>
+                                        <h3>Marinda Davis</h3>
+                                    <Image class="facultyImg" src={marinda} />
+                            </Grid.Column>
+                            <Grid.Column>
+                                        <h3>Shelly Hutchinson</h3>
+                                    <Image class="facultyImg" src={shelly} />
+                            </Grid.Column>
+                            <Grid.Column>
+                                    <h3>Jess Hendricks</h3>
+                                    <Image class="facultyImg" src={jess} />
+                            </Grid.Column>
+                            <Grid.Column>
+                                        <h3>Amy Schulke</h3>
+                                    <Image class="facultyImg" src={amy} />
+                            </Grid.Column>
+                            <Grid.Column>
+                                        <h3>Scott Jovovich</h3>
+                                    <Image class="facultyImg" src={scott} />
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
                 </Segment>
             </Segment>
         </Carousel>
